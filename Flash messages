@@ -1,0 +1,15 @@
+from flask import Flask, flash, redirect, url_for
+
+app = Flask(__name__)
+
+@app.route('/questions/<int:question_id>')
+def get_question(question_id):
+    if question_id not in range(1, 11):
+        flash('Invalid question access! Please navigate questions in order.', 'error')
+        return redirect(url_for('index'))
+    else:
+        # Code to handle valid question access
+        pass
+
+if __name__ == '__main__':
+    app.run()
