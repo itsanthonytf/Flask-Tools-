@@ -1,0 +1,19 @@
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/questions/<int:question_id>')
+def get_question(question_id):
+    return f'Question {question_id}'
+
+if __name__ == '__main__':
+    app.run()
+
+@app.route('/question/<int:question_id>', methods=['GET', 'POST'])
+def question(question_id):
+    if request.method == 'POST':
+        selected_choice = request.form['choice']
+        # Process the selected choice here
+        return redirect(url_for('answer'))
+    # Render the question template with the current question
+    return render_template('question.html', question=question_id)
