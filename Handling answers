@@ -1,0 +1,8 @@
+responses = []
+
+# User submits an answer
+user_answer = "User's answer"
+responses.append(user_answer)
+
+# Redirect to the next question
+# Add code for redirection here
