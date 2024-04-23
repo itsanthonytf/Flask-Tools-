@@ -1,0 +1,9 @@
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse
+
+def question_show(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    if question.number_in_url != question_id:
+        correct_url = reverse('question_show', args=[question.number_in_url])
+        return redirect(correct_url)
+    # Continue rendering the question show page
