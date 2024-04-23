@@ -1,0 +1,21 @@
+from flask import Flask, redirect, url_for
+
+app = Flask(__name__)
+
+questions_answered = 0
+
+@app.route('/')
+def survey():
+    global questions_answered
+    if questions_answered < 4:
+        questions_answered += 1
+        return f'Question {questions_answered}: How satisfied are you?'
+    else:
+        return redirect(url_for('thank_you'))
+
+@app.route('/thankyou')
+def thank_you():
+    return 'Thank You!'
+
+if __name__ == '__main__':
+    app.run()
